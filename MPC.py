@@ -1,6 +1,6 @@
 #Multiprocessing Prime Calculator
 from multiprocessing import Pool
-from time import time
+import time
 
 
 
@@ -21,11 +21,21 @@ def Prime(initialNumber):
 
 def main():
     
-    #process = []
+    print("Digite um intervalo entre dois números \nEx:1-100")
+    inputString = input()
+    try:
+        min = int(inputString.split('-')[0])
+        max = int(inputString.split('-')[1])
+    except:
+        print("Número inválido")
+        return
 
-    nb2 = 1
-    max = 50000
-    process = [nb2+n for n in range(max)]
+    if(min > max):
+        temp = min
+        min = max
+        max = temp
+    
+    process = [min+n for n in range(max)]
     print(process[0], process[-1], len(process))
 
     result = []
@@ -41,8 +51,9 @@ def main():
     end_t = time.perf_counter()
     total_duration = end_t - start_t
 
-    print(result, len(result))
-    print(f"main took {total_duration:.2f}s total")
+    print(result)
+    print(len(result), " números primos foram encontrados")
+    print(f"main levou {total_duration:.2f}s para terminar")
 
 
 
