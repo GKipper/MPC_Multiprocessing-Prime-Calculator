@@ -35,8 +35,8 @@ def main():
         min = max
         max = temp
     
-    process = [min+n for n in range(max)]
-    print(process[0], process[-1], len(process))
+    process = [min+n for n in range(max-min+1)]
+    #print(process[0], process[-1], len(process))
 
     result = []
 
@@ -54,6 +54,8 @@ def main():
     print(result)
     print(len(result), " números primos foram encontrados")
     print(f"main levou {total_duration:.2f}s para terminar")
+    input()
+    main()
 
 
 
